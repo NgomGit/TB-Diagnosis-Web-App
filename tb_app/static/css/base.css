@@ -1,0 +1,30 @@
+body {
+    font-size: 20px;
+
+}
+
+#dashboard-info{
+    font-size: 20px;
+    
+}
+
+#dashboard-info a {
+    color: #891E0A;
+}
+
+
+#navbar{
+    background-color: rgba(137, 29, 10, 0.219);
+    padding: 0;
+    border-radius: 10px;
+
+}
+
+#navbar .nav-link{
+    color: #891E0A;
+} 
+
+.navbar-target{
+
+    background-color: #eee;
+}

@@ -1,0 +1,40 @@
+body{
+}
+
+.container {
+    width: 70%;
+}
+
+#jumbotron{
+   margin: 0;
+
+}
+
+#jumbotron h4{
+    color: #891E0A;;
+}
+
+
+#team .row{
+    width: 85%;
+    margin: 0 auto;
+}
+
+.login{
+    width: 50%;
+    text-align: center;
+    margin:20px auto;
+    margin-bottom: 100px;
+}
+
+.login a {
+
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    width: 50%;
+}
+
+.login .btn{
+    background-color: #891E0A;
+}

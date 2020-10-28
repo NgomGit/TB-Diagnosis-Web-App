@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap3%}
+{% load static %}
+<html>
+    <head>
+         <!-- Google Fonts -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"> -->
+
+  <!-- Vendor CSS Files -->
+  
+  <link rel="stylesheet" href="{% static 'css/team.css' %}" />
+
+  <link rel="stylesheet" href="{% static 'css/costum_team.css' %}" />
+    </head>
+
+    <body>
+        <div class="jumbotron jumbotron-fluid bg-white" id="jumbotron">
+            <div class="container">
+                <div class="section-title">
+                    <!-- <h2> Tuberculosis Diagnosis</h2> -->
+                    <h3>Online <span>Tuberculosis Diagnosis</span></h3>
+                </div>
+              <p class="">Due to the advances in the 
+                diagnosis and treatment of tuberculosis (TB), over 58 million lives were 
+                saved between 2000 and 2018 according to the World Health Organization 
+                (WHO).</p>
+                <p>This online TB diagnosis platform is a contribution to the further 
+                    improvement in TB diagnosis, and is based on trained deep learning 
+                    models reported in the following paper.</p>
+            </div>
+
+        </div>
+
+<section id="team" class="team col-md-12">
+    <div class="">
+
+        <div class="section-title">
+        <h2>Team</h2>
+        <!-- <h3>Our Hardworking <span>Team</span></h3> -->
+        <!-- <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p> -->
+        </div>
+
+        <div class="row col-md-12 ">
+
+
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                <div class="member">
+                    <div class="member-img">
+                        <img src="{% static 'tb_app/images/ngom.png' %} " class="img-fluid" alt="not load">
+                        <div class="social">
+                            <!-- <a href=""><i class="icofont-twitter"></i></a>
+                            <a href=""><i class="icofont-facebook"></i></a>
+                            <a href=""><i class="icofont-instagram"></i></a> -->
+                            <a href="https://www.linkedin.com/in/mouhamed-lamine-ngom/" target="_blank"><i class="icofont-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h4>Mouhamed Lamine Ngom</h4>
+                        <span> AIMS Alumni </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                <div class="member">
+                    <div class="member-img">
+                        <img src="{% static 'tb_app/images/bubacarr.jpg' %} "  class="img-fluid" alt="not load">
+                        <div class="social">
+                        <a href="https://www.linkedin.com/in/bubacarr-bah-0ab35387/" target="_blank"><i class="icofont-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h4>Dr Bubacarr Bah</h4>
+                        <span>AIMS South Africa and Stellenbosch University</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                <div class="member">
+                    <div class="member-img">
+                        <img src="{% static 'tb_app/images/habiboulaye_amadou.jpg' %} " class="img-fluid" alt="not load">
+                        <div class="social">
+                            <a href=""><i class="icofont-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h4>Habiboulaye AMADOU BOUBACAR </h4>
+                        <span>AI4Africa</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End Team Section -->
+
+    <div class="login">
+        <a href="{% url 'login' %}" class="btn"><span> Login into my account</span> </a>
+    </div>
+    
+          
+    </body>
+</html>
+
+
+
+{% endblock %}

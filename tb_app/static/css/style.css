@@ -1,0 +1,146 @@
+
+
+
+.container {
+    width: 50%;
+}
+
+.ctn-img {
+    width:60%;
+    margin: 0 auto;
+}
+
+.ctn-img img{
+  width: 200px;
+  height: 200px;
+}
+.ctn-alert {width: 50%;}
+
+.ctn-form{
+    width: 100%;
+    margin:0 auto;
+}
+
+.left {
+    padding: 20px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 400px;
+}
+.card-text {
+    margin-top: 19%;;
+}
+
+.right-init {
+    transform: translateY(200);
+    opacity: 0;
+    transition: all 1s;
+}
+
+.right-after{
+
+    transform: translateY(-200);
+    opacity: 1;
+    transition: all 1s;
+}
+.right{
+    margin-top: 7%;
+    display: grid;
+
+    grid-template-columns: 1fr;
+}
+
+
+.ctn-file-form {
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+
+}
+#btn-submit{
+    margin-top: 10px;
+    width:100%;
+}
+.card {
+    margin: 0 auto;
+}
+.main h1 {
+    text-align:  center;
+}
+
+.hide {
+    display: none;
+}
+
+/* loading effects */
+
+* {box-sizing: border-box;}
+
+.img-zoom-container {
+  position: relative;
+  background-color: white;
+  
+}
+
+.img-zoom-lens {
+position: absolute;
+border: 1px solid #d4d4d4;
+/*set the size of the lens:*/
+width: 40px;
+height: 40px;
+}
+
+.img-zoom-result {
+border: 1px solid #d4d4d4;
+/*set the size of the result div:*/
+width: 100%;
+height: 100%;
+}
+
+
+.login{
+  width: 50%;
+  text-align: center;
+  margin:20px auto;
+  margin-bottom: 100px;
+}
+
+.login:hover a{
+  background-color: rgba(137, 29, 10, 0.055);
+}
+
+.login:hover a {
+
+  color: #891E0A;
+
+}
+
+
+.ctn-form #submit{
+  background-color: #891E0A;
+  /* color: #FAE8A3; */
+  height: 40px;
+  color: white;
+  padding: 5px;
+  width: 100%;
+  align-self: center;
+  border: none;
+  border-radius: 8px;
+  font-size: 19px;
+}
+
+.proba-result{
+  /* background-color:rgba(137, 29, 10, 0.048); */
+  margin-top: 50px;
+  padding: 20px;
+  text-align: left;
+  border-radius: 10px;
+}
+
+.proba-result h3{
+  margin-bottom: 20px;
+}
+
+.proba-result .progress-bar{
+}

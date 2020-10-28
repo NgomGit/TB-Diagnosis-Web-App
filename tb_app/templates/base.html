@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!-- {% load bootstrap3 %} -->
+{% load static %}
+<!-- {% load bootstrap4 %} -->
+
+<html>
+    <head>
+
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>TB diagnosis </title>
+        <meta content="" name="descriptison">
+        <meta content="" name="keywords">
+        <link rel="icon" href="{% static 'tb_app/assets/circle_favicon.png' %}" />
+        
+        <link href="{% static 'tb_app/assets/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+        <link href="{% static 'tb_app/assets/vendor/icofont/icofont.min.css'%}" rel="stylesheet">
+        <link href="{% static 'tb_app/assets/vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet">
+        <link href="{% static 'tb_app/assets/vendor/remixicon/remixicon.css'%}" rel="stylesheet">
+        <link href="{% static 'tb_app/assets/vendor/venobox/venobox.css' %}" rel="stylesheet">
+        <!-- <link href="{% static 'tb_app/assets/vendor/owl.carousel/assets/owl.carousel.min.css'%}" rel="stylesheet"> -->
+
+
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+        
+        
+        
+    </head>
+    
+<body>
+
+    <!-- <div class="pos-f-t">
+        <div class="collapse" id="navbarToggleExternalContent">
+          <div class="p-4 navbar-target" >
+            <div id='dashboard-info'>
+                {% if user.is_authenticated %}
+                    <h2>{{ user.username|default:'Guest' }}!</h2>
+                    <div class="list-group ">
+                        <a  href="{% url 'logout' %}">Logout</a>
+                        <a href="{% url 'password_change' %}">Change password</a>
+                    </div>
+                    
+                    
+                {% else %}
+                    <a href="{% url 'login' %}">Login</a>
+                {% endif %}
+            </div>
+          </div>
+        </div>
+        <nav class="navbar navbar-dark " id="navbar">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </nav>
+      </div> -->
+
+
+     <div class="navbar">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'tb_app/images/aims_logo.jpg' %}" width="60" height="60" class="d-inline-block align-top" alt="">
+            
+          </a>
+        <ul class="nav"  id="navbar">
+            <li class="nav-item">
+                {% if user.is_authenticated %}
+                <h3>
+                    <a class="nav-link active" href="#"> Welcome {{ user.username|default:'Guest' }}! </a>
+                </h3>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'password_change' %}">Change password</a>
+            </li>
+            <li class="nav-item">
+                <a  class="nav-link" href="{% url 'logout' %}">Logout</a>
+            </li>
+
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link " href="{% url 'login' %}">Login</a>
+            </li>
+            {% endif%}
+          </ul>
+     </div>
+    
+
+    <script src="{% static 'tb_app/assets/vendor/jquery/jquery.min.js'%}"></script>
+    <script src="{% static 'tb_app/assets/vendor/bootstrap/js/bootstrap.min.js'%}" ></script>
+
+{% block content %}
+
+{% endblock %}
+<footer>
+
+    <!-- <h3> Develop by Mouhamed Lamine Ngom</h3> -->
+</footer>
+</body>
+</html>

@@ -1,0 +1,238 @@
+
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+{% load bootstrap4 %}
+{# Display a form #}
+
+<head>
+    <title> Tuberculosis Diagnosis</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  
+
+</head>
+
+{% block content %}
+
+<body>
+
+    {%  if user.is_authenticated  %}
+        <div class="app">
+            <div class="main text-center">
+
+                <div class="ctn-alert"></div>
+                    {% if error %}
+                    
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <strong>Warning!</strong> {{error}}
+                        </div>
+                    
+                    {% endif %}
+            </div>
+
+
+        <div class="left ">
+                <div class="ctn-img">
+                    <div class="card bg-dark text-white">
+                        <div class="img-zoom-container" >
+                            <img src="{% static 'media/'%}{{filename}}" id="myimage" class="img-fluid" alt="My image">
+                        </div>
+                    
+                    </div>
+
+                    <div class="ctn-form">
+                
+                        <form method="post" enctype="multipart/form-data" class="form">
+                            {% csrf_token %}
+                            <div class="ctn-file-form" >
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="myfile">
+                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                                </div>
+                            </div>
+        
+                            <button type="submit"  class="btn btn-lg" id="submit">
+                                <span class="spinner-border spinner-border-sm hide" role="status" aria-hidden="true" id="loader"></span>
+                                Upload</button>
+                    
+                        </form>
+                    </div>
+                </div>
+
+                
+                <div id="myresult" class="img-zoom-result"></div>
+        
+            
+                
+        </div>
+
+        <div class="text-center right" id="right-side">
+            
+            <div class="card col-md-12">
+                <div class="row no-gutters">
+                    <div class="col-md-2">
+                        <img src="{% static 'tb_app/images/results.jpg' %}"  class="card-img-top text-center" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                           
+                          {% if result %}
+                            <h5 class="display-3 text-center">Result : {{result}}</h5>
+                                <div class="proba-result">
+                                    <h3 class="" > Probability of TB {{tb_score}}</h3>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width:{{progress_value_tb}}%" aria-valuenow="{{tb_score}}" aria-valuemin="0" aria-valuemax="100">{{progress_value_tb}}%</div>
+                                    </div>
+                                </div>
+
+                                <div class="proba-result">
+                                    <h3 class=" " > Probability of NTB {{ntb_score}}</h3>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width:{{progress_value_ntb}}%" aria-valuenow="{{ntb_score}}" aria-valuemin="0" aria-valuemax="100">{{progress_value_ntb}}%</div>
+                                    </div>
+                                </div>
+                                
+
+                                <div class="proba-result">
+                                    <h3 class="display-5 " > Threshold use {{threshold}}</h3>
+                                </div>
+                               
+                            {% endif%}
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </div>
+        <!-- modal here -->
+        <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                    <div>
+                        <h1>Image Zoom</h1>
+
+                        <p>Mouse over the image:</p>
+                        
+                        <div class="img-zoom-container">
+                        <img id="myimage" src="{% static 'media/'%}{{filename}}" width="300" height="240">
+                        <div id="myresult" class="img-zoom-result"></div>
+                        </div>
+                    </div> 
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        <!-- end modal here -->
+    
+            
+        
+        </div>
+    </div>
+    {% else%}
+    <div class="login">
+        <a href="{% url 'login' %}"> Please login into your account</a>
+    </div>
+
+    {% endif%}
+</body>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+<!-- Latest compiled JavaScript -->
+<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script> -->
+
+<script type='text/Javascript' src="{% static 'js/main.js' %}">
+  
+</script>
+
+<script >
+    $('#submit').click(function(){
+        $('#loader').toggleClass('hide')
+    })
+
+    $('.img-zoom-container').click(function(){
+        imageZoom("myimage", "myresult");
+    })
+  
+
+    function imageZoom(imgID, resultID) {
+      var img, lens, result, cx, cy;
+      img = document.getElementById(imgID);
+      result = document.getElementById(resultID);
+      /*create lens:*/
+      lens = document.createElement("DIV");
+      lens.setAttribute("class", "img-zoom-lens");
+      /*insert lens:*/
+      img.parentElement.insertBefore(lens, img);
+      /*calculate the ratio between result DIV and lens:*/
+      cx = result.offsetWidth / lens.offsetWidth;
+      cy = result.offsetHeight / lens.offsetHeight;
+      /*set background properties for the result DIV:*/
+      result.style.backgroundImage = "url('" + img.src + "')";
+      result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
+      /*execute a function when someone moves the cursor over the image, or the lens:*/
+      lens.addEventListener("mousemove", moveLens);
+      img.addEventListener("mousemove", moveLens);
+      /*and also for touch screens:*/
+      lens.addEventListener("touchmove", moveLens);
+      img.addEventListener("touchmove", moveLens);
+      function moveLens(e) {
+        var pos, x, y;
+        /*prevent any other actions that may occur when moving over the image:*/
+        e.preventDefault();
+        /*get the cursor's x and y positions:*/
+        pos = getCursorPos(e);
+        /*calculate the position of the lens:*/
+        x = pos.x - (lens.offsetWidth / 2);
+        y = pos.y - (lens.offsetHeight / 2);
+        /*prevent the lens from being positioned outside the image:*/
+        if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
+        if (x < 0) {x = 0;}
+        if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
+        if (y < 0) {y = 0;}
+        /*set the position of the lens:*/
+        lens.style.left = x + "px";
+        lens.style.top = y + "px";
+        /*display what the lens "sees":*/
+        result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+      }
+      function getCursorPos(e) {
+        var a, x = 0, y = 0;
+        e = e || window.event;
+        /*get the x and y positions of the image:*/
+        a = img.getBoundingClientRect();
+        /*calculate the cursor's x and y coordinates, relative to the image:*/
+        x = e.pageX - a.left;
+        y = e.pageY - a.top;
+        /*consider any page scrolling:*/
+        x = x - window.pageXOffset;
+        y = y - window.pageYOffset;
+        return {x : x, y : y};
+      }
+    }
+//  i
+</script>
+{% endblock %}
+{% if result %}
+
+<!-- Latest compiled JavaScript   <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p> -->   
+ {% endif %}
